@@ -1,0 +1,10 @@
+{
+  "description": "AI-powered customer support assistant guides users through troubleshooting with simple language, relevant help articles, and seamless human escalation.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

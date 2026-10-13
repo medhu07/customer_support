@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-canvas: #f8fafc;
+  --color-surface: #f4f7fa;
+  --color-ink: #172033;
+  --color-ink-muted: #5d687d;
+  --color-ink-faint: #8993a5;
+  --color-border: #e5e9f0;
+  --color-border-strong: #d4dae4;
+
+  --color-brand: #3166e5;
+  --color-brand-strong: #2655c7;
+  --color-brand-soft: #7fa3f4;
+  --color-brand-border: #c9d8fb;
+  --color-brand-pale: #eff4ff;
+  --color-article: #263f78;
+  --color-canvas-accent: #eef4ff;
+
+  --color-success: #16825d;
+  --color-success-pale: #eaf8f2;
+  --color-success-ring: #f4fbf8;
+  --color-danger: #b33a4b;
+  --color-danger-border: #f1c5cc;
+  --color-danger-pale: #fff1f3;
+  --color-danger-pale-strong: #ffe8eb;
+  --color-focus: rgb(49 102 229 / 18%);
+
+  --radius-card: 1.25rem;
+  --radius-message-user: 1.25rem 1.25rem 0.25rem 1.25rem;
+  --radius-message-assistant: 0.25rem 1.25rem 1.25rem 1.25rem;
+
+  --shadow-card: 0 16px 45px rgb(23 32 51 / 8%), 0 2px 6px rgb(23 32 51 / 4%);
+  --shadow-card-subtle: 0 6px 20px rgb(23 32 51 / 5%);
+  --shadow-button: 0 5px 14px rgb(49 102 229 / 22%);
+  --shadow-button-hover: 0 10px 22px rgb(49 102 229 / 28%);
+  --shadow-message: 0 8px 24px rgb(49 102 229 / 18%);
+
+  --spacing-18: 4.5rem;
+  --spacing-frame: 90rem;
+  --spacing-content: 74rem;
+  --spacing-hero: 46rem;
+  --spacing-copy: 39rem;
+  --spacing-search: 52rem;
+  --spacing-chat: 27rem;
+  --spacing-message: 36rem;
+  --spacing-assistant: 43rem;
+  --spacing-success: 48rem;
+  --spacing-conversation: 66rem;
+  --spacing-suggestion: 15rem;
+  --spacing-conversation-height: 31rem;
+  --spacing-input-height: 9rem;
+
+  --tracking-eyebrow: 0.12em;
+  --tracking-title: -0.035em;
+  --text-message: 0.9375rem;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-width: 1024px;
+    background: var(--color-canvas);
+  }
+
+  body {
+    margin: 0;
+    min-width: 1024px;
+    min-height: 100vh;
+    background: var(--color-canvas);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  textarea {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@utility max-w-frame {
+  max-width: var(--spacing-frame);
+}
+
+@utility max-w-content {
+  max-width: var(--spacing-content);
+}
+
+@utility max-w-hero {
+  max-width: var(--spacing-hero);
+}
+
+@utility max-w-copy {
+  max-width: var(--spacing-copy);
+}
+
+@utility max-w-search {
+  max-width: var(--spacing-search);
+}
+
+@utility max-w-message {
+  max-width: var(--spacing-message);
+}
+
+@utility max-w-assistant {
+  max-width: var(--spacing-assistant);
+}
+
+@utility max-w-success {
+  max-width: var(--spacing-success);
+}
+
+@utility max-w-conversation {
+  max-width: var(--spacing-conversation);
+}
+
+@utility min-h-suggestion {
+  min-height: var(--spacing-suggestion);
+}
+
+@utility grid-cols-main {
+  grid-template-columns: minmax(0, 1fr) 20rem;
+}
+
+@utility grid-cols-escalation {
+  grid-template-columns: minmax(0, 1fr) 23rem;
+}
+
+@utility min-h-chat {
+  min-height: var(--spacing-chat);
+}
+
+@utility max-h-conversation {
+  max-height: var(--spacing-conversation-height);
+}
+
+@utility max-h-input {
+  max-height: var(--spacing-input-height);
+}
+
+.app-shell {
+  background:
+    radial-gradient(circle at 50% 8%, rgb(49 102 229 / 7%), transparent 26rem),
+    var(--color-canvas);
+}
+
+.composer {
+  position: relative;
+}
+
+.composer::before {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgb(49 102 229 / 20%), transparent 55%);
+  content: "";
+  filter: blur(0.75rem);
+  opacity: 0.6;
+}
+
+.conversation-canvas {
+  background:
+    linear-gradient(rgb(255 255 255 / 82%), rgb(255 255 255 / 82%)),
+    radial-gradient(circle at 1px 1px, var(--color-border-strong) 1px, transparent 0);
+  background-size: auto, 1.5rem 1.5rem;
+}
+
+.typing-dots {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.typing-dots span {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: var(--color-brand);
+  animation: typing 1.2s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+@keyframes typing {
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-0.2rem);
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: enter 240ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
